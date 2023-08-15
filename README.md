@@ -1,6 +1,6 @@
 ## Components
 - [Hugo](https://gohugo.io)
-- [Hugo-Paper](https://themes.gohugo.io/themes/hugo-paper)
+- [Hugo-PaperMode](https://themes.gohugo.io/themes/hugo-papermod/)
 
 ## How to use
 Install Hugo
