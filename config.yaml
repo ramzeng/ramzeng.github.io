@@ -62,7 +62,7 @@ params:
   ShowRssButtonInSectionTermList: true
   ShowToc: false
   # comments: false
-  images: ["papermod-cover.png"]
+#  images: ["papermod-cover.png"]
 
   profileMode:
     enabled: true
@@ -81,13 +81,13 @@ params:
   homeInfoParams:
     Title: "PaperMod"
     Content: >
-      Welcome to demo of hugo's theme PaperMod.
+      Hi, I'm ramzeng! 👋
       
-      - **PaperMod** is a simple but fast and responsive theme with useful feature-set that enhances UX.
-      
-      - Do give a 🌟 on Github !
-      
-      - PaperMod is based on theme [Paper](https://github.com/nanxiaobei/hugo-paper).
+      - 📍 Backend Developer in Shenzhen, China
+
+      - 💻 Focusing on Golang & MySQL
+
+      - 🌐 Passionate about server-side development & distributed technologies
 
   socialIcons:
     - name: github
