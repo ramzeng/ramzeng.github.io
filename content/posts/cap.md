@@ -2,6 +2,7 @@
 title: "CAP 与 PACELC 定理"
 date: 2023-08-17T20:44:48+08:00
 draft: false
+tags: ["分布式"]
 ---
 ## CAP
 ### 介绍
