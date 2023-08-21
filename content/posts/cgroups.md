@@ -53,4 +53,4 @@ echo ${process_id} > playground/tasks
 ```bash
 top
 ```
-> 按下 shift+p，按照 CPU 使用率排序，可以看到 CPU 使用率为 50%。
+> 按下 Shift + P，按照 CPU 使用率排序，可以看到 CPU 使用率为 50%。
