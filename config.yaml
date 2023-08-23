@@ -110,12 +110,13 @@ params:
   #         SiteVerificationTag: "XYZabc"
 
   assets:
-    disableHLJS: true
-  #     favicon: "<link / abs url>"
-  #     favicon16x16: "<link / abs url>"
-  #     favicon32x32: "<link / abs url>"
-  #     apple_touch_icon: "<link / abs url>"
-  #     safari_pinned_tab: "<link / abs url>"
+    disableHLJS: true # to disable highlight.js
+    disableFingerprinting: true
+#    favicon: "<link / abs url>"
+#    favicon16x16: "<link / abs url>"
+#    favicon32x32: "<link / abs url>"
+#    apple_touch_icon: "<link / abs url>"
+#    safari_pinned_tab: "<link / abs url>"
 
   # cover:
   #     hidden: true # hide everywhere but not in structured data
@@ -137,12 +138,12 @@ markup:
     renderer:
       unsafe: true
   highlight:
-    noClasses: false
     # anchorLineNos: true
-    # codeFences: true
-    # guessSyntax: true
+    codeFences: true
+    guessSyntax: true
     # lineNos: true
-    # style: monokai
+    # noClasses: false
+    style: github-dark
 
 privacy:
   vimeo:
