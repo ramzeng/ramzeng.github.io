@@ -4,12 +4,15 @@ date: 2023-08-27T22:49:52+08:00
 draft: false
 tags: ["API", "安全"]
 ---
+## 前置
+API 签名：是指在 API 请求中加入签名参数，服务端根据签名参数校验请求是否合法的一种方式。API 签名的实现方式有很多种，本文不做讨论。
+
 ## 介绍
 API 重放攻击是指攻击者通过截获合法用户的请求，然后再次发送给服务端，从而达到攻击目的的一种攻击方式。
 
 ## Timestamp 方案
 ```bash
-curl example.com/api?timestamp=1693149140
+curl example.com/api?timestamp=xxx&signature=xxx
 ```
 ### 流程
 - 发起请求时，将当前时间戳作为参数传递给服务端
@@ -20,7 +23,7 @@ curl example.com/api?timestamp=1693149140
 
 ## Nonce 方案
 ```bash
-curl example.com/api?nonce=xxx
+curl example.com/api?nonce=xxx&signature=xxx
 ```
 ### 流程
 - 发起请求时，将随机字符串作为参数传递给服务端
@@ -31,7 +34,7 @@ curl example.com/api?nonce=xxx
 
 ## Timestamp + Nonce 方案
 ```bash
-curl example.com/api?timestamp=1693149140&nonce=xxx
+curl example.com/api?timestamp=xxx&nonce=xxx&signature=xxx
 ```
 ### 流程
 - 发起请求时，将当前时间戳和随机字符串作为参数传递给服务端
