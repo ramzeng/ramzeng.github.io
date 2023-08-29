@@ -49,7 +49,7 @@ params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   description: "ramzeng's tech blog"
   keywords: ["是然", "ramzeng", "tech", "blog"]
-  author: 是然
+  author: ""
   defaultTheme: auto
   # disableThemeToggle: true
   ShowShareButtons: false
@@ -60,7 +60,8 @@ params:
   ShowBreadCrumbs: true
   ShowCodeCopyButtons: true
   ShowRssButtonInSectionTermList: false
-  ShowToc: false
+  ShowToc: true
+  TocOpen: true
   # comments: false
 #  images: ["papermod-cover.png"]
 
