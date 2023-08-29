@@ -96,7 +96,7 @@ Etcd 采用 Raft 共识算法，具有很强的一致性和可用性。它以领
 - 使用 gRPC 暴露键值 API。此外，gRPC 网关是一个 RESTful 代理，可将所有 HTTP API 调用转换为 gRPC 消息。这使它成为 Kubernetes 的理想数据库
 - 以键值格式将所有对象存储在 /registry 目录键下。例如，在 default 命名空间中名为 Nginx 的 Pod 的信息可在 /registry/pods/default/nginx 下找到
 
-![Kubernetes Etcd](/kubernetes-Etcd.png)
+![Kubernetes Etcd](/kubernetes-etcd.png)
 
 此外，Etcd 是控制平面中唯一的 Statefulset 组件。
 
