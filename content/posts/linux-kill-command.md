@@ -1,5 +1,5 @@
 ---
-title: "Kill 命令"
+title: "kill 命令"
 date: 2023-08-29T19:40:36+08:00
 draft: false
 tags: ["linux"]
