@@ -67,38 +67,38 @@ kube-api-server 负责以下工作：
 - API 管理，暴露集群 API 端点并处理所有 API 请求
 - 身份认证（使用客户端证书、令牌和 HTTP 基本身份验证）和授权（ABAC 和 RBAC）
 - 处理 API 请求并验证 API 对象（如 Pods，Services 等）的数据
-- 唯一与 Etcd 通信的组件
+- 唯一与 etcd 通信的组件
 - 协调控制平面和工作节点组件之间的所有进程
 - 内置了 bastion api-server 代理。它是 API 服务器进程的一部分。它主要用于从集群外部访问 ClusterIP 服务，尽管这些服务通常只能在集群内部访问
 
 > 要减少集群攻击面，确保 API 服务器的安全至关重要。Shadowserver 基金会进行了一项实验，发现了 38 万个可公开访问的 Kubernetes API 服务器。
 
-### Etcd
+### etcd
 
-Kubernetes 是一个分布式系统，因此需要像 Etcd 这样高效的分布式数据库来支持其分布式特性。它充当后端服务发现和数据库的双重角色。你可以把它称为 Kubernetes 集群的大脑。
+Kubernetes 是一个分布式系统，因此需要像 etcd 这样高效的分布式数据库来支持其分布式特性。它充当后端服务发现和数据库的双重角色。你可以把它称为 Kubernetes 集群的大脑。
 
-Etcd 是一款开源的强一致性，分布式 KV 数据库。是什么意思呢？
+etcd 是一款开源的强一致性，分布式 KV 数据库。是什么意思呢？
 
 - 强一致性：如果对某个节点进行了更新，强一致性将确保它能立即更新到集群中的所有其他节点。此外，根据 CAP 定理，利用强一致性和分区容忍度实现 100% 的可用性是不可能的
-- 分布式：Etcd 被设计为在多个节点上作为集群运行，同时不牺牲一致性
+- 分布式：etcd 被设计为在多个节点上作为集群运行，同时不牺牲一致性
 - KV 数据库：以键和值的形式存储数据的非关系型数据库。它还提供键值 API。数据存储建立在 BboltDB 之上，而 BboltDB 是 BoltDB 的分叉
 
-Etcd 采用 Raft 共识算法，具有很强的一致性和可用性。它以领导者-成员的方式工作，实现高可用性并容忍部分节点故障。
+etcd 采用 Raft 共识算法，具有很强的一致性和可用性。它以领导者-成员的方式工作，实现高可用性并容忍部分节点故障。
 
-那么，Etcd 如何与 Kubernetes 协同工作？
+那么，etcd 如何与 Kubernetes 协同工作？
 
-简单来说，使用 kubectl 获取 Kubernetes 对象详细信息时，是从 Etcd 获取的。此外，在部署 Pod 等对象时，也会在 Etcd 中创建一个条目。
+简单来说，使用 kubectl 获取 Kubernetes 对象详细信息时，是从 etcd 获取的。此外，在部署 Pod 等对象时，也会在 etcd 中创建一个条目。
 
-简而言之，以下是您需要了解的有关 Etcd 的信息：
+简而言之，以下是您需要了解的有关 etcd 的信息：
 
 - 存储 Kubernetes 对象（pods、secrets、daemonsets、deployments、configmaps、statefulsets 等）的所有配置、状态和元数据
-- 允许客户端使用 Watch API 订阅事件。kube-api-server 使用 Etcd 的 Watch 功能来跟踪对象状态变化
+- 允许客户端使用 Watch API 订阅事件。kube-api-server 使用 etcd 的 Watch 功能来跟踪对象状态变化
 - 使用 gRPC 暴露键值 API。此外，gRPC 网关是一个 RESTful 代理，可将所有 HTTP API 调用转换为 gRPC 消息。这使它成为 Kubernetes 的理想数据库
 - 以键值格式将所有对象存储在 /registry 目录键下。例如，在 default 命名空间中名为 Nginx 的 Pod 的信息可在 /registry/pods/default/nginx 下找到
 
-![Kubernetes Etcd](/kubernetes-etcd.png)
+![Kubernetes etcd](/kubernetes-etcd.png)
 
-此外，Etcd 是控制平面中唯一的 Statefulset 组件。
+此外，etcd 是控制平面中唯一的 Statefulset 组件。
 
 ### kube-scheduler
 
@@ -335,7 +335,7 @@ CNI 插件如何与 Kubernetes 配合使用？
 
 ### Kubernetes 控制平面的主要用途是什么？
 
-控制平面负责维护集群及其上运行的应用程序的理想状态。它由 API 服务器、Etcd、调度程序和控制器管理器等组件组成。
+控制平面负责维护集群及其上运行的应用程序的理想状态。它由 API 服务器、etcd、调度程序和控制器管理器等组件组成。
 
 ### Kubernetes 集群中工作节点的用途是什么？
 
@@ -345,13 +345,13 @@ CNI 插件如何与 Kubernetes 配合使用？
 
 控制平面和工作节点之间的通信使用 PKI 证书进行保护，不同组件之间通过 TLS 进行通信。这样，只有受信任的组件才能相互通信。
 
-### Kubernetes 中 Etcd 键值存储的用途是什么？
+### Kubernetes 中 etcd 键值存储的用途是什么？
 
-Etcd 主要存储 kubernetes 对象、集群信息、节点信息以及集群的配置数据，例如集群上运行的应用程序的期望状态。
+etcd 主要存储 kubernetes 对象、集群信息、节点信息以及集群的配置数据，例如集群上运行的应用程序的期望状态。
 
-### 如果 Etcd 宕机，Kubernetes 应用程序会发生什么？
+### 如果 etcd 宕机，Kubernetes 应用程序会发生什么？
 
-如果 Etcd 发生中断，正在运行的应用程序不会受到影响，但无法创建或更新任何对象。
+如果 etcd 发生中断，正在运行的应用程序不会受到影响，但无法创建或更新任何对象。
 
 ## 结论
 
