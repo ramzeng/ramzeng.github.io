@@ -33,7 +33,7 @@ tags: ["K8s", "翻译"]
 控制平面负责容器协调和维护集群的理想状态。它包括以下组件：
 
 - kube-api-server
-- Etcd
+- etcd
 - kube-scheduler
 - kube-controller-manager
 - cloud-controller-manager
