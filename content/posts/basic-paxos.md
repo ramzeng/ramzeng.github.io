@@ -4,7 +4,9 @@ date: 2023-08-24T20:59:37+08:00
 draft: false
 tags: ["分布式", "共识算法"]
 ---
+
 ## 角色
+
 - 提议者（Proposer）：收到客户端的请求，提出相关的提案，试图让接受者接受该提案，发生冲突时进行协调，推动算法运行
 - 接受者（Acceptor）：接受或拒绝提议者的提案，若超过半数的接受者接受提案，则该提案被批准
 - 学习者（Learner）：只学习被批准的提案，不参与决议过程
@@ -12,28 +14,36 @@ tags: ["分布式", "共识算法"]
 ![basic-paxos](/basic-paxos.png)
 
 ## 过程
+
 ### Prepare 阶段
+
 - 某个提议者发起提案，向所有接受者发送 Prepare 请求，请求中附带数字 n 作为提案 ID
 - 接受者收到 Prepare 请求后，将会给予提议者两个承诺和一个应答
 
 #### 承诺
+
 - 承诺不会再接受提案 ID 小于或等于 n 的 Prepare 请求
 - 承诺不会再接受提案 ID 小于 n 的 Accept 请求
 
 #### 应答
+
 - 提案 ID 大于之前接受的所有提案 ID，则返回 Promise 响应，附带之前接受的提案 ID 和对应的提案值
 - 提案 ID 小于之前接受的所有提案 ID，则返回 Reject 响应
 
 > 如果 Promise 响应中中的提案 ID 大于提议者发起的提案 ID，则提议者需要放弃当前提案，使用 Promise 响应中的提案 ID 和提案值发起 Accept 请求
 
 ### Accept 阶段
-- 如果提议者收到了超过半数的接受者的 Promise 响应，则可以向这些接受者发送 Accept 请求 
+
+- 如果提议者收到了超过半数的接受者的 Promise 响应，则可以向这些接受者发送 Accept 请求
 - 接受者收到 Accept 请求后，如果请求中的提案 ID 大于等于之前接受的所有提案 ID，则接受该提案，并将提案 ID 和提案值存储起来
 - 如果接受者收到了超过半数的 Accept 请求，则该提案被批准
 
 ## Go 实现
+
 https://github.com/ramzeng/basic-paxos
+
 ### Proposer
+
 ```go
 package main
 
@@ -136,7 +146,9 @@ func (p *Proposer) halfAcceptorsCount() int {
 	return len(p.acceptors) / 2
 }
 ```
+
 ### Acceptor
+
 ```go
 package main
 
@@ -253,7 +265,9 @@ func NewAcceptor(id int, learners []int) *Acceptor {
 	return acceptor
 }
 ```
+
 ### Learner
+
 ```go
 package main
 
@@ -355,5 +369,7 @@ func NewLearner(id int, acceptorIds []int) *Learner {
 	return learner
 }
 ```
+
 ## 参考
+
 - http://icyfenix.cn/distribution/consensus/paxos.html
