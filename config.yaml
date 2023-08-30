@@ -50,7 +50,7 @@ params:
   description: "ramzeng's tech blog"
   keywords: ["是然", "ramzeng", "tech", "blog"]
   author: ""
-  defaultTheme: auto
+  defaultTheme: light # light dark auto
   # disableThemeToggle: true
   ShowShareButtons: false
   ShowReadingTime: false
