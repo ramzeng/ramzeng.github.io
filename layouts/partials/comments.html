@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'ba9d6aff511146ec5898',
+        clientSecret: 'd451bd869c6e2a3568543904388ac76fc093de4a',
+        repo: 'ramzeng.github.io',
+        owner: 'ramzeng',
+        admin: ['ramzeng'],
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    })
+
+    gitalk.render('gitalk-container')
+</script>
