@@ -1,7 +1,7 @@
 ---
 title: "Web Security"
 date: 2023-08-31T00:09:23+08:00
-draft: true
+draft: false
 tags: ["Web 安全"]
 ---
 ## XSS
