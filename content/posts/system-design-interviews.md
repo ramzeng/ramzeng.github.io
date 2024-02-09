@@ -1,7 +1,8 @@
 ---
 title: "【译】系统设计面试"
 date: 2024-02-08T08:50:31+08:00
-draft: true
+draft: false
+tags: ["系统设计", "面试"]
 ---
 > 原文链接：https://github.com/karanpratapsingh/system-design?tab=readme-ov-file#system-design-interviews
 
