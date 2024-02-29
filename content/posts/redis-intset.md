@@ -37,7 +37,7 @@ contents 数组中的元素是有序的，且不重复。encoding 用于标识 c
 
 ![扩容空间](https://cdn4.codesign.qq.com/materials/2024/02/20/GD5Oj24EPoJE02Z3eAX20/cq1at6zql9bciluk/23a60d05-52b9-493a-b79c-f5770b90dfcb.png)
 
-![移动元素](https://cdn4.codesign.qq.com/materials/2024/02/20/GD5Oj24EPoJE02Z3eAX20/cq1at6zql9bciluk/fab08587-1a7c-4fa7-b7f3-a6f933a9b36b.png)
+![移动元素](https://cdn4.codesign.qq.com/materials/2024/02/20/GD5Oj24EPoJE02Z3eAX20/cq1at6zql9bciluk/e8e9f0-ab9e3ca6-04d4-424f-b92a-96a50a6b1d03.png)
 
 > 不支持降级操作，一旦升级，就不会再降级！！！
 
