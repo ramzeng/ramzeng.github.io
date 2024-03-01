@@ -2,7 +2,7 @@
 title: "HTTP 状态码"
 date: 2024-03-01T16:38:17+08:00
 draft: false
-tags: ["HTTP", "面试题"]
+tags: ["HTTP", "面试"]
 ---
 > 权威文档：https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status
 
