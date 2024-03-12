@@ -1,5 +1,5 @@
 ---
-title: "Redis IntSet 结构"
+title: "Redis IntSet"
 date: 2024-02-16T22:29:02+08:00
 draft: false
 tags: ["Redis", "面试", "Redis 数据结构"]
@@ -42,9 +42,9 @@ contents 数组中的元素是有序的，且不重复。encoding 用于标识 c
 > 不支持降级操作，一旦升级，就不会再降级！！！
 
 ## 优势
-1. 元素是有序的，且不重复
-2. 元素是紧凑的，不会浪费空间，使用最少空间存储元素
-3. 查找、插入、删除操作的时间复杂度都是 O(logN)，因为有序，可以使用二分查找
+- 元素是有序的，且不重复
+- 元素是紧凑的，不会浪费空间，使用最少空间存储元素
+- 查找、插入、删除操作的时间复杂度都是 O(logN)，因为有序，可以使用二分查找
 
 ## 源码
 https://github.com/redis/redis/blob/unstable/src/intset.h
