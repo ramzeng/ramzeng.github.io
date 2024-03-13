@@ -1,5 +1,5 @@
 ---
-title: "Redis QuickList"
+title: "Redis QuickList 结构"
 date: 2024-03-12T17:36:30+08:00
 draft: false
 tags: ["Redis", "面试", "Redis 数据结构"]

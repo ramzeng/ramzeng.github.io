@@ -1,5 +1,5 @@
 ---
-title: "Redis ZipList"
+title: "Redis ZipList 结构"
 date: 2024-03-05T10:22:12+08:00
 draft: false
 ---

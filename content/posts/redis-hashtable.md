@@ -1,8 +1,8 @@
 ---
-title: "Redis HashMap"
+title: "Redis HashTable 结构"
 date: 2024-03-12T23:19:45+08:00
 draft: false
-tags: ["redis", "面试", "Redis 数据结构"]
+tags: ["Redis", "面试", "Redis 数据结构"]
 ---
 ## 结构
 ```c
