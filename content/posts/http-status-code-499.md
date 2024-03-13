@@ -7,5 +7,8 @@ tags: ["HTTP", "面试"]
 > 权威文档：[https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status)
 
 ## 以下为补充的一些状态码
+
 ### 499 Client Closed Request
+
 由 Nginx 定义的非标准状态码，表示客户端主动关闭了请求，导致服务器无法完成请求
+

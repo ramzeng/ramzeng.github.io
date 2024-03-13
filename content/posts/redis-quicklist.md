@@ -5,7 +5,9 @@ draft: false
 tags: ["Redis", "面试", "Redis 数据结构"]
 ---
 ## 结构
+
 双向链表，每一个节点都是一个 ziplist
+
 ```c
 /* Node, quicklist, and Iterator are the only data structures used currently. */
 
@@ -91,6 +93,7 @@ typedef struct quicklistEntry {
     int offset;
 } quicklistEntry;
 ```
+
 - quicklistNode: 每一个节点都是一个 ，通过 zl 字段指向 ziplist 实例
 - quicklistLZF: 当 ziplist 被压缩时，zl 指向 quicklistLZF 实例
 - quicklistBookmark: 用于缓存最近访问过的节点，提高查找性能
@@ -99,8 +102,11 @@ typedef struct quicklistEntry {
 - quicklistEntry: ziplist 中的 entry 结构
 
 ## 图示
+
 ![](https://cdn4.codesign.qq.com/materials/2024/03/12/GD5Oj24EPoJE03Z3eAX12/5czsyl09comlmt1l/8caadea5-b58c-4f29-ae50-6328714794ff.png)
 
 ## 优势
+
 - 节省内存空间：通过使用 ziplist 作为底层实现，减少内存开销
 - 提高性能：通过将大列表拆分为多个小的 ziplist，减少了对整个列表的操作，从而提高了列表操作的性能
+
