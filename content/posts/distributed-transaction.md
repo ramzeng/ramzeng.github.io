@@ -46,3 +46,42 @@ tags: ["分布式", "面试"]
 - SAGA：长事务模式，有业务侵入
 
 ## XA 模式
+
+XA 是一种分布式事务协议，由 XA 协议规范定义，是一种两阶段提交的分布式事务协议。XA 协议规范定义了事务管理器 TM 和资源管理器 RM 之间的通信协议。几乎所有主流的数据库都支持 XA 协议。
+
+### 标准流程
+
+- 第一阶段：准备阶段，TC 向 RM 发起 prepare 消息，RM 执行事务的预提交操作，然后返回结果给 TC
+- 第二阶段：提交阶段，如果所有 RM 都返回 ready，TC 向 RM 发起 commit 消息，RM 执行事务的提交操作，然后返回结果给 TC
+
+具体过程如下图所示：
+
+正常流程：
+![](https://cdn4.codesign.qq.com/materials/2024/03/14/GD5Oj24EPoJE03Z3eAX14/g0tpts249oijxw0c/0e9d81ad-51a9-4a5e-a841-465ff40aabb1.png)
+
+异常流程：
+![](https://cdn4.codesign.qq.com/materials/2024/03/14/GD5Oj24EPoJE03Z3eAX14/g0tpts249oijxw0c/978c19a5-d221-4489-b021-c3fb534d0186.png)
+
+### Seata 流程
+
+- RM 一阶段工作
+  - 注册分支事务到 TC
+  - 执行分支业务 SQL 但不提交
+  - 上报状态到 TC
+- TC 二阶段工作
+  - 检测所有分支事务状态
+  - 通知 RM 提交或回滚分支事务
+- RM 二阶段工作
+  - 根据 TC 的通知提交或回滚分支事务
+
+![](https://cdn4.codesign.qq.com/materials/2024/03/14/GD5Oj24EPoJE03Z3eAX14/9obfzu3wuvkyygyg/7cf6f5e2-7020-4c59-bed5-6afcda65f016.png)
+
+### 优势
+
+1. 事务强一致性，满足 ACID 特性
+2. 主流数据库都支持 XA 协议，实现简单，没有业务侵入
+
+### 劣势
+
+1. 一阶段需要锁定数据库资源，等待二阶段结束才能释放，性能较差
+2. 依赖关系型数据库实现事务
