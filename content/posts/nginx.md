@@ -24,7 +24,7 @@ tags: ["Nginx"]
 5. BSD 许可证
 
 ## Nginx 的组成
-- Nginx 二进制可执行文件
+- 二进制可执行文件
 - nginx.conf 配置文件
 - access.log 访问日志
 - error.log 错误日志
